@@ -1,0 +1,247 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "muttemp.html" %}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block content %}
+
+
+    <style type="text/css">
+
+        body {
+            background-color: rgba(204, 204, 204, 0.1);
+            width: 100%;
+        {#text-align: justify;#}
+        }
+
+        .little_title {
+            color: #663333;
+            font-size: 24px;
+            font-family: "Verdana";
+            padding: 5px;
+            
+            border-bottom: 3px solid #663333;
+            left: 10%;
+            right: 10%;
+            
+
+        }
+
+        .little_title-2 {
+            color: #fff;
+            font-size: 24px;
+            font-family: "Verdana";
+            padding: 5px;
+            padding-left: 25px;
+            background: url('/static/subtitle.png') no-repeat;
+            background-size: 267px 40px;
+            height: 50px;
+
+        }
+
+        .header-text {
+            padding: 20px;
+        }
+
+        .box-style {
+            border: 2px solid #663333;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            
+            padding: 30px;
+            margin-top: 80px;
+        }
+
+        p {
+            font-family: "Verdana";
+        }
+
+        #qs {
+            font-family: "Verdana";
+            font-size: 24px;
+
+        }
+
+        #arrow-img {
+            position: absolute;
+
+            top: 150px;
+            right: 200px;
+            transform: rotate(180deg);
+        }
+
+        .row {
+            position: relative;
+            margin: auto;
+            border: 1px solid #ffffff;
+            background-color: #ffffff;
+            border-radius: 3px;
+
+        }
+
+        /* table style*/
+        .table-color {
+            background-color: #1ABC9C;
+            height: 15px;
+        }
+
+        .table-bordered {
+            margin-top: 15px;
+        }
+    </style>
+    <style>
+        a.whitelink a:link,
+        a.whitelink a:visited  {
+        color:white;
+        text-decoration:none;
+        }
+        a.whitelink a:hover,
+        a.whitelink a:active  {
+        color:#000000;
+        text-decoration:underline;
+        background:#FFFFFF;
+        }
+    </style>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-mb-8" style=" margin-top: 60px">
+                <p style="font-size: 30px; color: #01636A; margin-left: 2px">&nbsp;
+                    <strong>Drug</strong>&nbsp;<strong>K</strong>nowledge <strong>B</strong>ase </p>
+            </div>
+            
+        </div>
+
+         <!-- Search Style -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/search.css">
+
+ <div id="cover">
+  <form method="get" action="">
+    <div class="tb">
+      <div class="td"><input type="text" placeholder="Search DrugKB" required></div>
+      <div class="td" id="s-cover">
+        <button type="submit">
+          <div id="s-circle"></div>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+        <div class="row" style="text-align: justify">
+            <div class='col-lg-8 col-md-8 col-sm-8 col-xs-8 col-mb-8'>
+                <div class="page-header">
+                    <div class='little_title'>
+                        About
+                    </div>
+                    <div class="header-text">
+                        <p>
+                            Welcome to our open access database <b>DrugKB</b>.
+                        </p>
+
+                        <p>
+                            <b>DrugKB is a comprehensive knowledge base that ...
+                        <p>
+                            DrugKB will be updated regularly to provide the research community with an up-to-date
+                            knowledge base. When using DrugKB, please feel free to start with the Document section.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+       
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+                <div class="box-style">
+                    <div id="qs">DDI Network Viewer</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-mb-2">
+                    <img src="/static/ddi_network.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+                <div class="box-style">
+                    <div id="qs">DDI Pair Viewer</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-mb-2">
+                    <img src="/static/ddi_network.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+                <div class="box-style">
+                    <div id="qs">Key Pathway Viewer</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-mb-2">
+                    <img src="/static/ddi_network.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+                <div class="box-style">
+                    <div id="qs">Data Statistic</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-mb-2">
+                    <img src="/static/ddi_network.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <!-- Footer Section Start -->
+    <footer style="background: #1ABC9C">
+        <!-- Footer Area Start -->
+        <section class="footer-Content" style="background: #1ABC9C">  {# 大背景 #}
+            <div class="container" style="background: #1ABC9C"> {# Copyright那块 #}
+                <div class="row"
+                     style="background: #1ABC9C; border: 0; -webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-mb-12" style="background: #1ABC9C">
+                        <div class="nwidget">
+                            <h3 class="block-title">About</h3>
+                            <ul class="menu">
+                                <li><a href="http://bmi.sjtu.edu.cn">SJTU - Biomedical Information Lab</a></li>
+                                <li><a href="http://bioinformatics.nenu.edu.cn/">NENU - Institute of Computational
+                                    Biology</a></li>
+                                <li><a href="http://www.smhc.org.cn/">SHANGHAI MENTAL HEALTH CENTER</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-mb-12" style="background: #1ABC9C">
+                        <div class="nwidget">
+                            <h3 class="block-title">Resources</h3>
+                            <ul class="menu">
+                                <li><a href="https://go.drugbank.com/">DrugBank</a></li>
+                                <li><a href="https://www.drugs.com/">Drugs</a></li>
+                                <li><a href="https://www.genome.jp/kegg/drug/">KEGGDrug</a></li>
+                                <li><a href="https://www.pharmgkb.org/">PharmGKB</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-mb-12"
+                         style="background: #1ABC9C; color: white">
+                        
+                        
+                        <script type="text/javascript"
+                                src="//rf.revolvermaps.com/0/0/8.js?i=5s6a0sdrqtd&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33"
+                                async="async"></script>
+
+                    </div>
+                </div>
+                <p style="text-align: center"><strong>
+                    <small>© 2018 bmi.sjtu.edu.cn. All rights reserved. <a href="http://www.beian.miit.gov.cn" style="color: white">浙ICP备18030141号.</a></small>
+                </strong></p>
+            </div>
+
+        </section>
+
+        <!-- Footer area End -->
+    </footer>
+{% endblock %}

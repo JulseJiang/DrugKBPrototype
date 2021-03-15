@@ -1,0 +1,146 @@
+{% include "muttemp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %} 
+
+ <style type="text/css">
+ body{
+	background-color:rgba(204,204,204,0.1);
+}
+ 		.Gene
+ 		{
+ 			border:1px solid #fff;
+ 			border-radius:3px;
+ 			background-color:#fff;
+ 			margin:15px;
+ 			padding:20px;
+ 			font-family:"Verdana";
+
+ 		}
+ 		.DNM
+ 		{
+ 			border:1px solid #fff;
+ 			border-radius:3px;
+ 			background-color:#fff;
+ 			margin:15px;
+ 			padding:20px;
+ 			font-family:"Verdana";
+ 		}
+ 		.CNV
+ 		{
+ 			border:1px solid #fff;
+ 			border-radius:3px;
+ 			background-color:#fff;
+ 			margin:15px;
+ 			padding:20px;
+ 			font-family:"Verdana";
+ 		}
+ 		.title-style
+ 		{
+ 			font-size:26px;
+ 			color:#fff;
+ 			background:url('/static/subtitle.png') no-repeat;
+			background-size:300px 50px ;
+   			height:50px;
+   			width:300px;
+   		
+ 			padding-left:40px;
+ 			
+
+ 		}
+        #sf 
+        {
+            width: 200px;
+            
+
+        }
+        #sf2 
+        {
+            width: 50px;
+
+        }
+        #sf3 
+        {
+            width: 200px;
+          
+        }
+        #sf4 
+        {
+            width: 200px;
+           
+        }
+     /*footer*/
+  </style>
+ <style>
+        /*footer*/
+        .footer
+        {
+            background-color:#007BB6;
+            width:100%;
+            display: block;
+            height:50px;
+             display: flex;
+             margin-top:20px;
+             position:relative;
+        }
+        .foot a{
+            text-decoration:none;
+            color:#CCCCCC;
+        }
+        .foot a:hover{
+            text-decoration:none;
+            color:#fff;
+            border-bottom:3px solid  #FFFFFF;
+        }
+        .foot-p
+        {
+            position:absolute;
+            {#top:100px;#}
+            left:40%;
+            text-align:center;
+        }
+    </style>
+<div class="container">
+	<div class='row'>
+         <div class="col-md-4" style="vertical-align:top">
+                     <div class="Gene">
+		        <div class="title-style"> Gene Search</div>
+                <hr />
+		         	{{ wtf.quick_form(af0) }}
+		         {% if notmatch %}
+		         	<p style="color:red;">
+		     			No match found
+		     		</p>
+      			   {% endif %}
+     		</div>
+                 </div>
+
+        <div class="col-md-4" style="vertical-align:top">
+                <div class="DNM">
+                <div class="title-style" > DNM Search</div>
+                <hr />
+
+                {{ wtf.quick_form(af)}}
+                </div>
+        </div>
+        <div class="col-md-4" style="vertical-align:top">
+                     <div class="CNV">
+                    <div class="title-style" > CNV Search</div>
+                    <hr />
+                 	{{ wtf.quick_form(af2) }}
+                    </div>
+        </div>
+    </div>
+     <br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<div class="footer">
+
+        <div class="foot-p">
+{#           <img class="line2" alt=""  src="/static/line2.png" style="width: 600px; height: 60px;" />#}
+            <p><small>© 2018 bmi.sjtu.edu.cn. All rights reserved.</small><br />
+                <small>浙ICP备18030141号.</small></p>
+
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% include "muttemp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+<style>
+/*footer*/
+.footer
+{
+    background-color:#007BB6;
+    width:100%;
+    display: block;
+    height:50px;
+     display: flex;
+     margin-top:20px;
+     position:relative;
+}
+.foot
+{
+    height:50px;
+    left:15%;
+    float:left;
+    font-size:15px;
+    color:#fff;
+    padding:0;
+    position:relative;
+    margin:20px;
+}
+.foot a{
+    text-decoration:none;
+    color:#CCCCCC;
+}
+.foot a:hover{
+    text-decoration:none;
+    color:#fff;
+    border-bottom:3px solid  #FFFFFF;
+}
+.foot-p
+{
+    position:absolute;
+    {#top:100px;#}
+    left:40%;
+    text-align:center;
+}
+.line2
+{
+    position:absolute;
+    top:-30px;
+    left:-25%;
+    text-align:center;
+}
+</style>
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		{% for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+			{% if i!=key %}
+				<a href="/Browse/GeneSymbols/{{ i }}">{{ i }}  </a>
+			{% else %}
+				{{ key }}
+			{% endif %}
+		{% endfor %}
+		</div>
+	</div>
+{% if message %}
+	<div class="row">
+		{% for i in message[key] %}
+			<div class="col-md-2">
+				<a href="/Gene/{{ i }}">{{ i }}</a>
+			</div>
+		{% endfor %}
+
+	</div>
+
+	
+</div>
+{% endif %}
+<div class="footer">
+
+        <div class="foot-p">
+{#           <img class="line2" alt=""  src="/static/line2.png" style="width: 600px; height: 60px;" />#}
+            <p><small>© 2018 bmi.sjtu.edu.cn. All rights reserved.</small><br />
+                <small>浙ICP备18030141号.</small></p>
+
+        </div>
+</div>
+{% endblock %}

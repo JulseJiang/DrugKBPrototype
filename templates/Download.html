@@ -1,0 +1,344 @@
+{% include "muttemp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script>
+        $('.dropdown-toggle').dropdown();
+    </script>
+
+    <style>
+        body {
+            background-color: rgba(204, 204, 204, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 18px;
+
+        }
+    </style>
+    <style>
+        /*footer*/
+        .footer {
+            background-color: #007BB6;
+            width: 100%;
+            display: block;
+            height: 50px;
+            display: flex;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .foot {
+            height: 50px;
+            left: 15%;
+            float: left;
+            font-size: 15px;
+            color: #fff;
+            padding: 0;
+            position: relative;
+            margin: 20px;
+        }
+
+        .foot a {
+            text-decoration: none;
+            color: #CCCCCC;
+        }
+
+        .foot a:hover {
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 3px solid #FFFFFF;
+        }
+
+        .foot-p {
+            position: absolute;
+        {#top:100px;#} left: 40%;
+            text-align: center;
+        }
+
+        .line2 {
+            position: absolute;
+            top: -30px;
+            left: -25%;
+            text-align: center;
+        }
+    </style>
+    <style>
+        /* Table Head */
+        #table thead th {
+            background-color: rgb(128, 102, 160);
+            color: #fff;
+            border-bottom-width: 0;
+        }
+
+        /* Column Style */
+        #table td {
+            color: #000;
+        }
+
+        /* Heading and Column Style */
+        #table tr, #table th {
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(128, 102, 160);
+        }
+
+        /* Padding and font style */
+        #table td, #table th {
+            padding: 5px 10px;
+            font-size: 12px;
+            font-family: Verdana;
+            font-weight: bold;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                <h1>Welcome to the PsyMuKB v1.5 Download File Repository</h1></p>
+                <hr/>
+                <p>
+                    PsyMuKB will be updated regularly. You can download small data sets and subsets directly from this
+                    website by following the download link on any search result page. If you have any problems during the download process, please contact us !
+                </p>
+                <br>
+                <table class="table table-bordered table-hover table-condensed table-striped table-hasthead nowrap"
+                       data-fixed-columns="true" data-fixed-number="3" style="min-width:1000px;">
+                    <caption style="background-color: #007BB6; color: white"><strong><i>De novo</i> variants from
+                        psychiatric disorder studies data in PsyMuKB v1.5</strong></caption>
+                    <thead>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td><strong>Data</strong></td>
+                        <td><strong>Link</strong></td>
+                        <td><strong>Size</strong></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>DNM hits protein coding regions</td>
+                        <td>MasterFile_allDNMs-codingLoc_v1.5.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/DNMs/MasterFile_allDNMs-codingLoc_v1.5.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/DNMs/MasterFile_allDNMs-codingLoc_v1.5.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>23.4 MB</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">DNM hits non-coding regions</td>
+                        <td>MasterFile_allDNMs-intergenic_v1.5.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/DNMs/MasterFile_allDNMs-intergenic_v1.5.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/DNMs/MasterFile_allDNMs-intergenic_v1.5.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>173 MB</td>
+                    </tr>
+                    <tr>
+                        <td>MasterFile-allDNMs_ncRNA_v1.5.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/DNMs/MasterFile-allDNMs_ncRNA_v1.5.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/DNMs/MasterFile-allDNMs_ncRNA_v1.5.csv">FTP <img
+                                src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>21.6 MB</td>
+                    </tr>
+                    <tr>
+                        <td>MasterFile-allDNMs-UTR-intron-updownstream_v1.5.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/DNMs/MasterFile-allDNMs-UTR-intron-updownstream_v1.5.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/DNMs/MasterFile-allDNMs-UTR-intron-updownstream_v1.5.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>125 MB</td>
+                    </tr>
+                    <tr>
+                        <td>Copy number variants</td>
+                        <td>MasterFile_allCNVs_v1.5.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/DNMs/MasterFile_allCNVs_v1.5.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/DNMs/MasterFile_allCNVs_v1.5.csv">FTP <img
+                                src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>338 KB</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered table-hover table-condensed table-striped table-hasthead nowrap"
+                       data-fixed-columns="true" data-fixed-number="3" style="min-width:1000px;">
+                    <caption style="background-color: #007BB6; color: white"><strong>Gene expressions data in PsyMuKB
+                        v1.5</strong></caption>
+                    <thead>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td><strong>Data</strong></td>
+                        <td><strong>Link</strong></td>
+                        <td><strong>Size</strong></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Spatio-temporal brain expression from BrainSpan</td>
+                        <td>Brainspan_RNAseq_expression.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Gene%20expression/Brainspan_RNAseq_expression/Brainspan_RNAseq_expression.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/Gene%20expression/Brainspan_RNAseq_expression/Brainspan_RNAseq_expression.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>24.4 MB</td>
+                    </tr>
+                    <tr>
+                        <td>Single cell RNA-seq of mouse brain</td>
+                        <td>MouseBrain_expression.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Gene%20expression/MouseBrain_expression.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/Gene%20expression/MouseBrain_expression.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>104 MB</td>
+                    </tr>
+                    <tr>
+                        <td>Single cell RNA-seq of human brain</td>
+                        <td>HumanSingleCell_RNAseq_expression.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Gene%20expression/HumanSingleCell_RNAseq_expression/HumanSingleCell_RNAseq_expression.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/Gene%20expression/HumanSingleCell_RNAseq_expression/HumanSingleCell_RNAseq_expression.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>149 MB</td>
+                    </tr>
+                    <tr>
+                        <td>Various tissues expression of the human body from Gtex</td>
+                        <td>GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_tpm.gct.gz</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Gene%20expression/Gtex_Gene_expression/GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_tpm.gct.gz">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/mRNA%20transcript%20expression/Gtex_transcript_expression/GTEx_Analysis_2016-01-15_v7_RSEMv1.2.22_transcript_tpm.txt.gz">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>826 MB</td>
+                    </tr>
+                    <tr>
+                        <td>A de-identified, open access version of the sample<br> annotations available in dbGaP</td>
+                        <td>GTEx_v7_Annotations_SampleAttributesDS.txt</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Gene%20expression/Gtex_Gene_expression/GTEx_v7_Annotations_SampleAttributesDS.txt">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/mRNA%20transcript%20expression/Gtex_transcript_expression/GTEx_v7_Annotations_SampleAttributesDS.txt">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>7.9 MB</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered table-hover table-condensed table-striped table-hasthead nowrap"
+                       data-fixed-columns="true" data-fixed-number="3" style="min-width:1000px;">
+                    <caption style="background-color: #007BB6; color: white"><strong>Protein (including isoforms)
+                        expression data in PsyMuKB v1.5</strong></caption>
+                    <thead>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td><strong>Data</strong></td>
+                        <td><strong>Link</strong></td>
+                        <td><strong>Size</strong></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Various tissues protein expression of the human body<br> from Proteomics DB</td>
+                        <td>Protein_expression_fromProteomicsDB.json</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Protein%20%28including%20isoforms%29%20expression/Protein_expression_fromProteomicsDB.json">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/Protein%20(including%20isoforms)%20expression/Protein_expression_fromProteomicsDB.json">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>381 MB</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered table-hover table-condensed table-striped table-hasthead nowrap"
+                       data-fixed-columns="true" data-fixed-number="3" style="min-width:1000px;">
+                    <caption style="background-color: #007BB6; color: white"><strong>Regulatory elements data in PsyMuKB
+                        v1.5</strong></caption>
+                    <thead>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td><strong>Data</strong></td>
+                        <td><strong>Link</strong></td>
+                        <td><strong>Size</strong></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Promoter data from FANTOM5</td>
+                        <td>FANTOM5PromoterWithEntrezID.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Regulatory%20elements/promoter/FANTOM5PromoterWithEntrezID.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/Regulatory%20elements/promoter/FANTOM5PromoterWithEntrezID.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>8.32 MB</td>
+                    </tr>
+                    <tr>
+                        <td>Enhancer data from Genehancer</td>
+                        <td>Genehancer-2018.04update.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Regulatory%20elements/enhancer/Genehancer-2018.04update.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/Regulatory%20elements/enhancer/Genehancer-2018.04update.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>72.0 MB</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered table-hover table-condensed table-striped table-hasthead nowrap"
+                       data-fixed-columns="true" data-fixed-number="3" style="min-width:1000px;">
+                    <caption style="background-color: #007BB6; color: white"><strong>Transcript annotations data in
+                        PsyMuKB v1.5</strong></caption>
+                    <thead>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td><strong>Data</strong></td>
+                        <td><strong>Link</strong></td>
+                        <td><strong>Size</strong></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Transcript Structure data from Gencode V19</td>
+                        <td>GencodeV19_transcriptStructure.csv</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Transcript%20annotations/GencodeV19_transcriptStructure.csv">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/Transcript%20annotations/GencodeV19_transcriptStructure.csv">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>60.5 MB</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered table-hover table-condensed table-striped table-hasthead nowrap"
+                       data-fixed-columns="true" data-fixed-number="3" style="min-width:1000px;">
+                    <caption style="background-color: #007BB6; color: white"><strong>Protein-protein interaction (PPI)
+                        data in PsyMuKB v1.5</strong></caption>
+                    <thead>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td><strong>Data</strong></td>
+                        <td><strong>Link</strong></td>
+                        <td><strong>Size</strong></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Protein-protein interaction (PPI) data from BioGrid</td>
+                        <td>BIOGRID_Hsa_3.5.165.tab.txt</td>
+                        <td><a href="http://47.97.198.109:8080/PsyMuKB%20v1.5/Protein-protein%20interaction%20%28PPI%29/BIOGRID_Hsa_3.5.165.tab.txt">HTTP <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a>, <a
+                                href="ftp://psymukb.net/PsyMuKB%20v1.5/Protein-protein%20interaction%20(PPI)/BIOGRID_Hsa_3.5.165.tab.txt">FTP
+                            <img src="/static/Img/download_icon.png" width="20px" height="20px"/></a></td>
+                        <td>28.5 MB</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+            {#	<h1>Terms of Service</h1>#}
+
+
+        </div>
+
+    </div>
+    <div class="footer">
+
+        <div class="foot-p">
+            {#           <img class="line2" alt=""  src="/static/line2.png" style="width: 600px; height: 60px;" />#}
+            <p>
+                <small>© 2018 bmi.sjtu.edu.cn. All rights reserved.</small>
+                <br/>
+                <small>浙ICP备18030141号.</small>
+            </p>
+
+        </div>
+    </div>
+
+{% endblock %}

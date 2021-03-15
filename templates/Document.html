@@ -1,0 +1,498 @@
+{% include "muttemp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+    <style>
+        body {
+            background-color: rgba(204, 204, 204, 0.1);
+        }
+
+        img {
+        {#width:80%;#} height: auto;
+        }
+    </style>
+    <style>
+        /*footer*/
+        .footer {
+            background-color: #007BB6;
+            width: 100%;
+            display: block;
+            height: 50px;
+            display: flex;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .foot {
+            height: 50px;
+            left: 15%;
+            float: left;
+            font-size: 15px;
+            color: #fff;
+            padding: 0;
+            position: relative;
+            margin: 20px;
+        }
+
+        .foot a {
+            text-decoration: none;
+            color: #CCCCCC;
+        }
+
+        .foot a:hover {
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 3px solid #FFFFFF;
+        }
+
+        .foot-p {
+            position: absolute;
+        {#top:100px;#} left: 40%;
+            text-align: center;
+        }
+
+        .line2 {
+            position: absolute;
+            top: -30px;
+            left: -25%;
+            text-align: center;
+        }
+    </style>
+    <style>
+        /* Custom Styles */
+        ul.nav-tabs {
+            width: 140px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+
+        ul.nav-tabs li {
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+
+        ul.nav-tabs li:first-child {
+            border-top: none;
+        }
+
+        ul.nav-tabs li a {
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover {
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+
+        ul.nav-tabs li:first-child a {
+            border-radius: 4px 4px 0 0;
+        }
+
+        ul.nav-tabs li:last-child a {
+            border-radius: 0 0 4px 4px;
+        }
+
+        ul.nav-tabs.affix {
+            top: 30px; /* Set the top position of pinned element */
+        }
+    </style>
+    <style>
+        .active a {
+            text-decoration: none;
+            color: #5599FF;
+            border-bottom: 3px solid #FFFFFF;
+        }
+
+        .img {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+    <body data-spy="scroll" data-target="#myScrollspy">
+    <div class="container" style="text-align: justify">
+
+        <div class="row">
+            <div class="col-md-3" id="myScrollspy">
+                <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="150">
+                    <li class="active"><a href="#Overview">1.Overview</a></li>
+                    <li><a href="#Data Summary">2.Data Summary</a></li>
+                    <li><a href="#Browse">3.Browse</a></li>
+                    <li><a href="#Search">4.Search</a></li>
+                    <li><a href="#Information related to the query results">5.Information related to the query
+                        results</a></li>
+                    <li><a href="#Download">6.Download</a></li>
+                    {#                <li><a href="#collapseFive">Protein-Protein Interaction</a></li>#}
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <h2 id="Overview">1.Overview</h2>
+                <br>
+                <p><b>PsyMuKB</b> (<b><u>Psy</u></b>chiatric <b><u>Mu</u></b>tation <b><u>K</u></b>nowledge <b><u>B</u></b>ase)
+                    is a comprehensive knowledge base that provides information about various types of <u><b><i>de
+                        novo</i></b> variants</u>, such as single nucleotide variations (<b><u>SNVs</u></b>), small
+                    insertions and deletions (<b><u>indels</u></b>) and copy number of variants (<b><u>CNVs</u></b>),
+                    reported in patients with psychiatric disorders. (Detail in Table 1)</p>
+                <p><b>PsyMuKB</b> currently includes published <i>de novo</i> variants, both coding and non-coding, from
+                    <b>25</b> neuropsychiatric diseases, including Autism Spectrum Disorder (<b><u>ASD</u></b>), Bipolar
+                    Disorder (<b><u>BP</u></b>), Developmental Delay (<b><u>DD</u></b>), Intellectual Disability (<b><u>ID</u></b>),
+                    Obsessive Compulsive Disorder (<b><u>OCD</u></b>), Schizophrenia (<b><u>SCZ</u></b>), Tourette
+                    Syndrome (<b><u>TD</u></b>), etc., and unaffected siblings
+                    as control (<b><u>CTR</u></b>). (Detail in Table 1)</p>
+                <p>In addition, large-scale genomics data is integrated into the&nbsp;PsyMuKB&nbsp;database including
+                    mRNA brain expression, transcript and regulatory element annotation, and protein-protein
+                    interactions (PPI). Thus, PsyMuKB provides users with the comprehensive exploration of the variants
+                    with the visualization, in terms of the brain expression pattern of the disrupted gene and/or
+                    isoform, its genomic location in transcripts, and PPIs of the impacted protein.</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image001.png" alt="">
+                    <p>
+                        <small>Fig 1. Flowchart of the PsyMuKB database</small>
+                    </p>
+                </div>
+                <hr>
+
+                <h2 id="Data Summary">2.Data Summary</h2>
+                <br>
+                <p>At present, the PsyMuKB database contains various types of mutations and more than ~876,178 <i>de
+                    novo</i>
+                    variants. (Table 1).</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image003.png" alt="" style="width: 800px;">
+                    <p>
+                        <small>Table 1. Statistics of <i>de novo</i> mutations in PsyMuKB</small>
+                    </p>
+                    <br>
+                    <img src="/static/image005.png" alt="">
+                    <p>
+                        <small>Table 2. The types of <i>de novo</i> variants</small>
+                    </p>
+                </div>
+                <hr>
+
+                <h2 id="Browse">3.Browse</h2>
+                <h3>3.1 Browse by gene symbol</h3>
+                <p>You can select the interested gene by browsing through the list of gene symbols.(Fig 2.)</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image007.png" alt="" class="img">
+                    <p>
+                        <small>Fig 2. The interface of browsing by gene symbol</small>
+                    </p>
+                    <br>
+                </div>
+                <h3>3.2 Browser by gene sets</h3>
+                <p>You can select the interested gene by selecting symbols from different gene sets. PsyMuKB provides
+                    users with 16 different gene sets curated from the literature that are associated with neuronal
+                    functional, developments or behaviors, etc.(Fig 3.)</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image009.png" alt="">
+                    <p>
+                        <small>Fig 3. The interface of browsing by gene sets</small>
+                    </p>
+                </div>
+                <hr>
+
+                <h2 id="Search">4.Search</h2>
+                <br>
+                <p>There are a number of options available for querying the PsyMuKB. </p>
+                <h3>4.1 Quick Search:</h3>
+                <p>You can search by gene symbol, gene ID, or chromosome coordinates on "Home" page.</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image010.png" alt="">
+                    <p>
+                        <small>Fig 4. Quick Search interface</small>
+                    </p>
+                </div>
+                <br>
+                <h3>4.2 Advance search:</h3>
+                <ul>
+                    <li><strong>Search by gene symbol or gene entrez ID (same as in Quick Search):</strong></li>
+                    <br>
+                    <div style="text-align: center">
+                        <img src="/static/image011.png" alt="">
+                        <p>
+                            <small>Fig 5. Gene Search interface</small>
+                        </p>
+                    </div>
+                    <br>
+                    <li><strong>Search by DNMs:</strong></li>
+                    <p>One can search for more precise <i>de novo</i> mutations by indicating mutations type and
+                        disorder, with an optional specification of chromosome number and coordinates.</p>
+                    <br>
+                    <div style="text-align: center">
+                        <img src="/static/image013.png" alt="">
+                        <p>
+                            <small>Fig 6. DNM Search interface</small>
+                        </p>
+                    </div>
+                    <br>
+                    <li><strong>Search by CNVs:</strong></li>
+                    <p>One can search for more precise <i>de novo</i> copy number of variants by indicating mutations
+                        type and disorder, with an optional specification of chromosome number and coordinates.</p>
+                    <br>
+                    <div style="text-align: center">
+                        <img src="/static/image015.png" alt="">
+                        <p>
+                            <small>Fig 7. CNV Search interface</small>
+                        </p>
+                    </div>
+                </ul>
+                <hr>
+
+
+                <h2 id="Information related to the query results">5.Information related to the query results</h2>
+                <br>
+                <p>The query results contain two major sections: "<b>Gene information</b>" and "<b>Mutation
+                    information</b>".</p>
+
+                <h3>5.1 Gene information</h3>
+                <p>There are five modules: Gene Information, Expressions, De novo variants, Transcript, and
+                    Protein-protein interactions.</p>
+
+                <h4>5.1.1 Gene Information</h4>
+                <p>This module shows some tables of gene details, including Basic information, Summary (Uniprot Summary
+                    and Refseq Summary), Assessment Table (score of some tools on the potential tolerance of genes).</p>
+
+                <h4>5.1.2 Expression</h4>
+                <p>This module shows some visualizations for gene expression in a specific tissue or cell types.</p>
+                <p>The brain expressions including Spatio-temporal human developmental brain expression (BrainSpan),
+                    Genotype-Tissue expression (GTEx), human brain single cell expression (Zhang et al., PMID:
+                    25186741), adult mouse brain single cell expression (Saunders et al., PMID: 30096299).</p>
+
+                <div style="text-align: center">
+                    <img src="/static/image017.png" alt="" align="absbottom" class="img">
+                    <p>
+                        <small>a</small>
+                    </p>
+                    <img src="/static/image018.png" alt="" class="img">
+                    <p>
+                        <small>b</small>
+                    </p>
+                    <img src="/static/image019.png" alt="" class="img">
+                    <p>
+                        <small>c</small>
+                    </p>
+                    <img src="/static/image020.png" alt="" class="img">
+                    <p>
+                        <small>d</small>
+                    </p>
+                    <img src="/static/image0201.png" alt="" class="img">
+                    <p>
+                        <small>e</small>
+                    </p>
+                    <p>
+                        <small>Fig 8. Gene expression in specific tissue or cell types. (a) Gene-level expression in
+                            different tissues (data source: GTEx v7). (b) Spatio-temporal human developmental brain
+                            expression (data source: BrainSpan). (c) Human embryonic prefrontal cortex single cell
+                            expression. (d) Adult mouse Brain single cell expression. (e) Protein expression (data
+                            source: Proteomics DB).
+                        </small>
+                    </p>
+                </div>
+
+                <br>
+                <h4>5.1.3 <i>De novo</i> variants</h4>
+                <p>The "<i>De novo</i> variants" part in gene information page provides the count of neuropsychiatric
+                    diseases
+                    related to the certain gene De novo mutations.</p>
+                <div style="text-align: center">
+                    <img src="/static/image021.png" alt="" style="width: 850px; height: 600px">
+                    <p>
+                        <small>Fig 9. Gene DNMs-Neuropsychiatric diseases information table</small>
+                    </p>
+                    <br>
+                </div>
+
+                <h4>5.1.3 Transcript</h4>
+                <p>The mutations are visualized on top of all the isoforms of an impacted gene. Mutations are drawn on
+                    top of all the isoforms according to their chromosome locations. The mutation size has been adjusted
+                    for the visualization purpose. </p>
+                <p>The information including <b>3 diagrams</b>: Visualization of regulatory element DNMs, Visualizations
+                    of de novo variants in transcripts, Visualizations of de novo CNVs. With similar modes of structure,
+                    the Visualization of regulatory element DNMs (Fig 10.) as an example.</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image022.png" alt="" class="img">
+                    <p>
+                        <small>Fig 10. Visualization of regulatory element DNMs</small>
+                    </p>
+                </div>
+                <br>
+                <p>The tables of <strong>Gencode</strong> transcripts, <strong>Refseq</strong> transcripts, <strong>Enhancer</strong>
+                    information and <strong>Promoter</strong> information are also shown in this part.</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image023.png" alt="" style="width: 800px">
+                    <p>
+                        <small>Fig 11. Gencode transcripts and Refseq transcripts table</small>
+                        <br>
+                    </p>
+                </div>
+                <div style="text-align: center">
+                    <img src="/static/image0231.png" alt="" style="width: 800px">
+                    <p>
+                        <small>Fig 12. Enhancer information and Promoter information table</small>
+                    </p>
+                </div>
+                <br>
+                <h4>5.1.4 Protein-protein interactions</h4>
+                <p>Protein-protein interaction (PPI) data is extracted from Biogrid v3.5.165. The red node indicates the
+                    queried gene, and all other blue nodes are its interacting partners (Fig 13.).</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image024.png" alt="">
+                    <p>
+                        <small>a</small>
+                    </p>
+                    <img src="/static/image0241.png" alt="">
+                    <p>
+                        <small>b</small>
+                    </p>
+                    <p>
+                        <small>Fig 13. PPI Network (Data source: BioGrid)</small>
+                    </p>
+                </div>
+                <br>
+                <p>Below PPI diagram, there is a table showing all the genes which have PPI in the diagram. (Fig
+                    14.)</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image025.png" alt="" style="width: 800px">
+                    <p>
+                        <small>Fig 14. PPI statistical table</small>
+                    </p>
+                </div>
+
+
+                <h3>5.2 Mutation information</h3>
+                <br>
+                <h4>5.2.1 SNV mutation</h4>
+                <p>We collected and curated both coding and non-coding de novo mutations (in total of ~876,178) from
+                    ~120 all major WES, WGS and targeted sequencing studies on 26 neuropsychiatric disorders, including
+                    autism spectrum disorders (ASD), intellectual disability (ID), epileptic encephalopathy (EE),
+                    schizophrenia (SCZ), bipolar disorder (BP), attention-deficit/hyperactivity disorder (ADHD),
+                    obsessive compulsive disorder (OCD), Congenital Heart Disease (CHD), Tourette Disorder (TD), and
+                    healthy siblings as controls(<b>Table 1</b>). Further, we included the mutation annotation scores
+                    from tools, such as SIFT, PolyPhen, CADD, DeepSea to annotate the pathogenicity of variants. In
+                    addition, PsyMuKB also provides the visualization of exact locations of these mutations on the
+                    isoforms of the impacted genes in the "Transcript information" section.</p>
+                <p>The mutation table is shown below: </p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image026.png" alt="" style="width: 800px">
+                    <p>
+                        <small>a</small>
+                    </p>
+                    <img src="/static/image027.png" alt="" style="width: 800px">
+                    <p>
+                        <small>b</small>
+                    </p>
+                    <p>
+                        <small>Fig 15. The mutation table. (a) Coding <i>de novo</i> mutations. (b) Non-coding <i>de
+                            novo</i>
+                            variations.
+                        </small>
+                    </p>
+                </div>
+                <br>
+                <h4>5.2.2 CNV mutation</h4>
+                <p>We collected and curated Copy Number Variants from 19 studies on four psychiatric disorders,
+                    including ASD, BD, ID/DD, SCZ and Control (<b>Table 1</b>).</p>
+                <p>The mutation table is shown below:</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image029.png" alt="" style="width: 800px">
+                    <p>
+                        <small>Fig 16. <i>De novo</i> copy number variations</small>
+                    </p>
+                    <br>
+                </div>
+                <h4>5.2.3 Mutation Details</h4>
+                <p><strong>In the table of the SNV mutation list, you can click on a mutation in a row and then tune to
+                    the page of the selected mutation details.</strong>
+                    On the next mutation details page, you can see the details of the mutation, mRNA-level impact and
+                    Protein-level impact.</p>
+                <h4>5.2.3.1 Selected Mutation</h4>
+                <div style="text-align: center">
+                    <img src="/static/image0311.png" alt="" style="width: 800px">
+                    <p>
+                        <small>Fig 17. Selected Mutation</small>
+                    </p>
+                </div>
+                <h4>5.2.3.2 mRNA-level impact</h4>
+                <p>Isoform expressions of the human brain were downloaded from GTEx portal
+                    (2016-01-15_v7_RNASeQCv1.1.8). Interface design provides the graphical view on the brain expressions
+                    of all the impacted transcripts owing to this mutation, which can help the user realize the
+                    consequence of isoform carrying a certain mutation in a specific brain region.</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image030.png" alt="">
+                    <p>
+                        <small>Fig 18. mRNA-level impact</small>
+                    </p>
+                </div>
+                <br>
+                <h4>5.2.3.2 Protein-level impact</h4>
+                <p>Protein isoform expressions in tissues were downloaded from Proteomics DB. Like mRNA-level, this
+                    interface design allowed users to explore gene products special expression patterns by selecting
+                    impacted and/or brain expressed protein.</p>
+                <br>
+                <div style="text-align: center">
+                    <img src="/static/image031.png" alt="">
+                    <p>
+                        <small>Fig 19. Protein-level impact</small>
+                    </p>
+                </div>
+                <hr>
+
+                <h2 id="Download">6.Download</h2>
+                <h3>6.1 Small data sets download</h3>
+                <p>PsyMuKB provides users with download option next to each data table and visualization. You can
+                    download small data sets and subsets directly from this website by following the download link on
+                    any search result page.</p>
+                <div style="text-align: center">
+                    <img src="/static/image032.png" alt="">
+
+                    <img src="/static/image033.png" alt="" style="width: 800px">
+                    <p>
+                        <small>Fig 20. Download button samples</small>
+                    </p>
+                </div>
+                <h3>6.2 Batch download</h3>
+                <p>You can download in bulk from the PsyMuKB download page.</p>
+                <div style="text-align: center">
+                    <img src="/static/image_download.png" alt="" class="img">
+                    <p>
+                        <small>Fig 21. Batch download</small>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="footer">
+
+        <div class="foot-p">
+            {#           <img class="line2" alt=""  src="/static/line2.png" style="width: 600px; height: 60px;" />#}
+            <p>
+                <small>© 2018 bmi.sjtu.edu.cn. All rights reserved.</small>
+                <br/>
+                <small>浙ICP备18030141号.</small>
+            </p>
+
+        </div>
+    </div>
+    </body>
+{% endblock %}

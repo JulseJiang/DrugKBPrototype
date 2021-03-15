@@ -1,0 +1,179 @@
+
+{#<link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon">#}
+{% extends "bootstrap/base.html" %}
+	<div class="row">
+    		<div class="col-md-4" style="width: 200px;
+        height: 100px; padding:20px;" >
+    			<img src="/static/logo.png" style="width: 150px;
+        height: 100px; " >
+    		</div>
+    		<div class="col-md-8" style="width: 300px;
+        height: 100px; margin-left:30px; padding:20px;" >
+    			<img src="/static/title2.png" style="width:750px;
+        height: 110px; "  >
+            </div></div>
+{% block title %}DrugKB{% endblock %}
+{% block navbar %}
+<style type="text/css">
+.my-bar
+{
+	background-color: #fff;
+	font-weight:bold;
+
+}
+.navbar{
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+.navbar .nav > li > a{
+    color: #000;   
+    font-family: "Verdana";
+}
+.navbar .nav > li > a:hover {
+    color: #000;
+    font-family: "Verdana";
+}
+.navbar .nav >li >a:active{
+    color: #000;
+    font-family: "Verdana";
+}
+.navbar .nav >li >a:visited{
+    color: #000;
+    font-family: "Verdana";
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+</style>
+
+
+	<div class="navbar navbar-inverse my-bar navbar-fixed-top" role="navigation">
+		<div class="container">
+
+		<div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+                data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+			</button>
+        </div>
+        <div class="navbar-collapse collapse">
+        	<ul class="nav navbar-nav">
+        		<!--<li><a href="/Guide">Home</a></li>-->
+                <li><a href="/" style="font-size: larger;"><strong>LOGO</strong></a></li>
+        		<li><a href="/" style="font-size: larger;">Home</a></li>
+                <li><a href="/Search" style="font-size: larger;">Search</a></li>
+
+    			<li class="dropdown">
+            		<a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" style="font-size: larger;">
+                	Browse <span class="caret"></span>
+            		</a>
+            		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+             			<li><a href="/Browse/GeneSymbols/A" style="font-size: larger;">Gene Symbols</a></li>
+
+                  		<li class="dropdown-submenu">
+                    		<a href="#" style="font-size: larger;">Gene Sets</a>
+                    		<ul class="dropdown-menu">
+                        		<li><a href="/Browse/Genesets/PSD" style="font-size: larger;">Postsynaptic density (PSD) genes
+</a></li>
+                        		<li><a href="/Browse/Genesets/Cell" style="font-size: larger;">Cell adhesion molecules genes
+</a></li>
+                        		<li><a href="/Browse/Genesets/Actin" style="font-size: larger;">Actin filament bundle genes
+</a></li>
+                        		<li><a href="/Browse/Genesets/Essential" style="font-size: larger;">Human Essential genes
+</a></li>
+                        		<li><a href="/Browse/Genesets/House" style="font-size: larger;">House keeping genes
+</a></li>
+                        		<li><a href="/Browse/Genesets/Transcription" style="font-size: larger;">Transcription factors
+</a></li>
+                        		<li><a href="/Browse/Genesets/Spicing" style="font-size: larger;">Splicing factors
+</a></li>
+                        		<li><a href="/Browse/Genesets/FMRP" style="font-size: larger;">FMRP binding targets
+</a></li>
+                        		<li><a href="/Browse/Genesets/ARC" style="font-size: larger;">ARC complex genes
+</a></li>
+                        		<li><a href="/Browse/Genesets/NMDAR" style="font-size: larger;">NMDAR complex genes
+</a></li>
+                        		<li><a href="/Browse/Genesets/receptor" style="font-size: larger;">receptor complex</a></li>
+                        		<li><a href="/Browse/Genesets/behavior" style="font-size: larger;">Abnormal behavior</a></li>
+                        		<li><a href="/Browse/Genesets/potentiation" style="font-size: larger;">Abnormal long-term potentiation</a></li>
+                        		<li><a href="/Browse/Genesets/nervous" style="font-size: larger;">nervous system electrophysiology</a></li>
+                        		<li><a href="/Browse/Genesets/calcium" style="font-size: larger;">Voltage-gated calcium channel complex genes
+</a></li>
+                        		<li><a href="/Browse/Genesets/Constraint" style="font-size: larger;">Genes under selective constraint
+</a></li>
+                    		</ul>
+                  		</li>
+                	</ul>
+            	</li>
+
+            	<li class="dropdown">
+            		<a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" style="font-size: larger;">
+                	Document <span class="caret"></span>
+            		</a>
+{#            		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">#}
+{#             			<li><a href="/Document/UserGuide" style="font-size: larger;">UserGuide</a></li>#}
+{#                    </ul>#}
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        <li><a href="/Document/UserGuide" style="font-size: larger;">User Guide</a></li>
+             			<li><a href="/Document/Instruction" style="font-size: larger;">Instruction</a></li>
+                    </ul>
+                </li>
+
+{#                <li><a href="/Document" style="font-size: larger;">Document</a></li>#}
+            	<li><a href="/Contact" style="font-size: larger;">Contact</a></li>
+                <li><a href="/Download" style="font-size: larger;">Download</a></li>
+            </ul>
+        </div>  
+    </div>
+</div>
+
+<div style="height:75px ;">
+</div>
+{% endblock %}

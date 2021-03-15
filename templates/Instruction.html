@@ -1,0 +1,1279 @@
+{% include "muttemp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+    <style>
+        body {
+            background-color: rgba(204, 204, 204, 0.1);
+        }
+
+        img {
+        {#width:80%;#} height: auto;
+        }
+    </style>
+    <style>
+        /*footer*/
+        .footer {
+            background-color: #007BB6;
+            width: 100%;
+            display: block;
+            height: 50px;
+            display: flex;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .foot {
+            height: 50px;
+            left: 15%;
+            float: left;
+            font-size: 15px;
+            color: #fff;
+            padding: 0;
+            position: relative;
+            margin: 20px;
+        }
+
+        .foot a {
+            text-decoration: none;
+            color: #CCCCCC;
+        }
+
+        .foot a:hover {
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 3px solid #FFFFFF;
+        }
+
+        .foot-p {
+            position: absolute;
+        {#top:100px;#} left: 40%;
+            text-align: center;
+        }
+
+        .line2 {
+            position: absolute;
+            top: -30px;
+            left: -25%;
+            text-align: center;
+        }
+    </style>
+    <style>
+        /* Custom Styles */
+        ul.nav-tabs {
+            width: 140px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+
+        ul.nav-tabs li {
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+
+        ul.nav-tabs li:first-child {
+            border-top: none;
+        }
+
+        ul.nav-tabs li a {
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover {
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+
+        ul.nav-tabs li:first-child a {
+            border-radius: 4px 4px 0 0;
+        }
+
+        ul.nav-tabs li:last-child a {
+            border-radius: 0 0 4px 4px;
+        }
+
+        ul.nav-tabs.affix {
+            top: 30px; /* Set the top position of pinned element */
+        }
+    </style>
+    <style>
+        .active a {
+            text-decoration: none;
+            color: #5599FF;
+            border-bottom: 3px solid #FFFFFF;
+        }
+
+        .img {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+    <script src="/static/bootstrap-table/src/bootstrap-table.js"></script>
+{#    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-bootstrap-table-en-US.min.js"></script>#}
+    <body data-spy="scroll" data-target="#myScrollspy">
+    <div class="container" style="text-align: justify">
+
+        <div class="row">
+            <div class="col-md-2" id="myScrollspy">
+                <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="150">
+                    <li class="active"><a href="#GeneList">Gene List</a></li>
+                    <li><a href="#GeneDetail">Gene Detail</a></li>
+                    <li><a href="#MutationList">Mutation List</a></li>
+                    <li><a href="#MutationDetail">Mutation Detail</a></li>
+{#                    <li><a href="#dbNSFP Information">dbNSFP Information</a></li>#}
+                </ul>
+            </div>
+            <div class="col-md-10">
+                <div id='GeneList'>
+                    <table class="table table-bordered table-hover table-striped table-hasthead nowrap">
+                        <caption style="background-color: #007BB6; color: white"><strong>&nbsp;Gene List</strong></caption>
+                        <thead>
+                            <tr>
+                                    <td><strong>Column Names</strong></td>
+                                    <td><strong>Description</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>EntrezID</td>
+                                <td>Entrez Gene ID.</td>
+                            </tr>
+                             <tr>
+                                <td>Symbol</td>
+                                <td>Gene Name. RefSeq gene definition is used.</td>
+                            </tr>
+                             <tr>
+                                <td>Chr</td>
+                                <td>Chromosome number.</td>
+                            </tr>
+                             <tr>
+                                <td>Band</td>
+                                <td>CytoBand location.</td>
+                            </tr>
+                             <tr>
+                                <td>Type</td>
+                                <td></td>
+                            </tr>
+                             <tr>
+                                <td>Gene Information</td>
+                                <td>Gene Information link in PsyMuKB.</td>
+                            </tr>
+                             <tr>
+                                <td>Mutation Information</td>
+                                <td>Mutation Information link in PsyMuKB.</td>
+                            </tr>
+                        </tbody>
+                </table>
+                </div>
+                <div id='GeneDetail'>
+                    <table class="table table-bordered table-hover table-striped table-hasthead nowrap">
+                        <caption style="background-color: #007BB6; color: white"><strong>&nbsp;Gene Detail</strong></caption>
+                        <thead>
+                            <tr>
+                                    <td></td>
+                                    <td><strong>Column Names</strong></td>
+                                    <td><strong>Description</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="7">Basic information</td>
+                                <td>EntrezID</td>
+                                <td>Entrez Gene ID.</td>
+                            </tr>
+                             <tr>
+                                <td>Official symbol</td>
+                                <td>Gene symbol.</td>
+                            </tr>
+                             <tr>
+                                <td>Synonyms</td>
+                                <td>Alternative names of the gene.</td>
+                            </tr>
+                             <tr>
+                                <td>Description</td>
+                                <td>Gene description.</td>
+                            </tr>
+                             <tr>
+                                <td>Location</td>
+                                <td>CytoBand location.</td>
+                            </tr>
+                             <tr>
+                                <td>Type of protein</td>
+                                <td>Protein type.</td>
+                            </tr>
+                             <tr>
+                                <td>External annotation</td>
+                                <td>External annotation from Genecard.</td>
+                            </tr>
+                             <tr>
+                                 <td rowspan="2">Summary</td>
+                                <td>uniprot_summary</td>
+                                <td>Uniprot gene summary.</td>
+                            </tr>
+                             <tr>
+                                <td>refseq_summary</td>
+                                <td>Refseq gene summary.</td>
+                            </tr>
+                             <tr>
+                                <td rowspan="9">Assessment Table</td>
+                                 <td>PLI</td>
+                                <td>The probability of being loss-of-function (LoF) intolerant. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td>Haploinsufficiency (HI) score rank</td>
+                                <td>Predicted probability of exhibiting haploinsufficiency. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td>Gene brain expressed</td>
+                                <td>Queried gene is expressed in brain tissues. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td>Protein brain expressed</td>
+                                <td>Queried protein is expressed in brain tissues. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td>Carrying LoF DNMs</td>
+                                <td>Number of loss-of-function DNMs hit the queried gene. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td>Carrying missense DNMs</td>
+                                <td>Number of missense DNMs hit the queried gene. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td>FMRP binding targets</td>
+                                <td>FMRP inteacting parters. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td>Postsynaptic density (PSD)</td>
+                                <td>Protein associates with postsynaptic membranes of excitatory synapses. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td>Human essential genes</td>
+                                <td>Genes are thought to be critical for human survival. See the Comment column information of  table for details.</td>
+                            </tr>
+                             <tr>
+                                <td rowspan="2">Variants Table</td>
+                                 <td>Variant type</td>
+                                <td>Indicates the type of variant.</td>
+                            </tr>
+                             <tr>
+                                <td>Phenotypes</td>
+                                <td>Observable clinical symptoms of the patient.</td>
+                            </tr>
+                             <tr>
+                                 <td rowspan="3">Gencode/Refseq transcripts</td>
+                                <td>TranscriptID</td>
+                                <td>Ensembl identifiers for transcripts.</td>
+                            </tr>
+                             <tr>
+                                <td>Transcript_exon_region</td>
+                                <td>Exon regions the transcript hits.</td>
+                            </tr>
+                             <tr>
+                                <td>Coding_exon_region</td>
+                                <td>Coding exon regions the transcript hits.</td>
+                            </tr>
+                             <tr>
+                                <td rowspan="6">Enhancer</td>
+                                 <td>Chrom</td>
+                                <td>Chromosome number.</td>
+                            </tr>
+                             <tr>
+                                <td>Start</td>
+                                <td>The start position of the enhancer on the chromosome.</td>
+                            </tr>
+                             <tr>
+                                <td>End</td>
+                                <td>The end position of the enhancer on the chromosome.</td>
+                            </tr>
+                             <tr>
+                                <td>Score</td>
+                                <td>Gene-GeneHancer associations and likelihood-based scores were generated using information that helps link regulatory elements to genes.</td>
+                            </tr>
+                             <tr>
+                                <td>Attributes</td>
+                                <td>A list of all genes associated with the GeneHancer.</td>
+                            </tr>
+                             <tr>
+                                <td>Target_GeneID</td>
+                                <td>Gene entrez ID of enhancer's target.</td>
+                            </tr>
+                             <tr>
+                                <td rowspan="3">Promoter</td>
+                                 <td>Chrom</td>
+                                <td>Chromosome number.</td>
+                            </tr>
+                             <tr>
+                                <td>Start</td>
+                                <td>The start position of the promoter on the chromosome.</td>
+                            </tr>
+                             <tr>
+                                <td>End</td>
+                                <td>The end position of the promoter on the chromosome.</td>
+                            </tr>
+                             <tr>
+                                <td rowspan="7">Protein-Protein Interactions Table</td>
+                                 <td>Symbol A</td>
+                                <td>Gene symbol of Protein-Protein Interaction participant geneA.</td>
+                            </tr>
+                             <tr>
+                                <td>GeneA Coding DNM Count</td>
+                                <td>Coding DNM counts of GeneA.</td>
+                            </tr>
+                             <tr>
+                                <td>Symbol B</td>
+                                <td>Gene symbol of Protein-Protein Interaction participant geneB.</td>
+                            </tr>
+                             <tr>
+                                <td>GeneB Coding DNM Count</td>
+                                <td>Coding DNM counts of GeneB..</td>
+                            </tr>
+                             <tr>
+                                <td>Interaction Detection Method</td>
+                                <td>Detection method of the Protein-Protein Interaction.</td>
+                            </tr>
+                             <tr>
+                                <td>Publication</td>
+                                <td>Publications indicate the Protein-Protein Interaction.</td>
+                            </tr>
+                             <tr>
+                                <td>Evidence</td>
+                                <td>Evidence counts of the Protein-Protein Interaction.</td>
+                            </tr>
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+{#                             <tr>#}
+{#                                <td></td>#}
+{#                                <td></td>#}
+{#                            </tr>#}
+
+                        </tbody>
+                </table>
+                </div>
+                <div id='MutationList'>
+                    <table class="table table-bordered table-hover table-striped table-hasthead nowrap">
+                        <caption style="background-color: #007BB6; color: white"><strong>&nbsp;Mutation List</strong></caption>
+                        <thead>
+                            <tr>
+                                    <td></td>
+                                    <td><strong>Column Names</strong></td>
+                                    <td><strong>Description</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="22">Coding <i>de novo</i> mutations </td>
+                                <td>Chr</td>
+                                <td>Chromosome number.</td>
+                            </tr>
+                             <tr>
+                                <td>Position</td>
+                                <td>Genomic position on the chromosome as to hg19 (1-based coordinate).</td>
+                            </tr>
+                             <tr>
+                                <td>Variant</td>
+                                <td>Reference nucleotide allele > Alternate nucleotide allele.</td>
+                            </tr>
+                             <tr>
+                                <td>Exonic Func</td>
+                                <td>Exonic variant function, e.g., nonsynonymous, synonymous, frameshift insertion.</td>
+                            </tr>
+                             <tr>
+                                <td>Case or control</td>
+                                <td>Sample from case or control set.</td>
+                            </tr>
+                             <tr>
+                                <td>Primary Phenotype</td>
+                                <td>Main phenotype of the patients for inclusion in the study.</td>
+                            </tr>
+                             <tr>
+                                <td>Potential Severity Level</td>
+                                <td>Impact level evaluated by types of mutations and predict tools (SIFT, Polyphen2, GERP++, CADD, and Clinvar).</td>
+                            </tr>
+                             <tr>
+                                <td>LoF</td>
+                                <td>Loss of function.</td>
+                            </tr>
+                             <tr>
+                                <td>SIFT</td>
+                                <td>SIFT prediction. .</td>
+                            </tr>
+                             <tr>
+                                <td>Polyphen2</td>
+                                <td>Pholyphen2 prediction based on HDIV.</td>
+                            </tr>
+                             <tr>
+                                <td>GERP++</td>
+                                <td>GREP++ "rejected substitutions" (RS) score.</td>
+                            </tr>
+                             <tr>
+                                <td>CADD</td>
+                                <td>Combined Annotation Dependent Depletion, phred-scaled scores, 10 means 10% percentile highest scores, 20 means 1% percentile highest scores, and 30% means 0.1% percentile highest scores.</td>
+                            </tr>
+                             <tr>
+                                <td>ClinVar</td>
+                                <td>ClinVar_SIG.</td>
+                            </tr>
+                             <tr>
+                                <td>Mutation site in  protein structure</td>
+                                <td>Mutation site in  protein structure.</td>
+                            </tr>
+                             <tr>
+                                <td>Sample ID</td>
+                                <td>Sample ID of the variant carrier.</td>
+                            </tr>
+                             <tr>
+                                <td>Study</td>
+                                <td>The Study that indicates the variant.</td>
+                            </tr>
+                             <tr>
+                                <td>Validation</td>
+                                <td>Validation status of the variant.</td>
+                            </tr>
+                             <tr>
+                                <td>1000G_ALL</td>
+                                <td>Average alternative allele frequency of the variant in all 1000G sets.</td>
+                            </tr>
+                             <tr>
+                                <td>ExAC_Freq</td>
+                                <td>Frequency of the variant in the ExAC database.</td>
+                            </tr>
+                             <tr>
+                                <td>gnomAD_exome_ALL</td>
+                                <td>Allele frequency in gnomAD exome set.</td>
+                            </tr>
+                             <tr>
+                                <td>gnomAD_genome_ALL</td>
+                                <td>Allele frequency in gnomAD genome set.</td>
+                            </tr>
+                             <tr>
+                                <td>DeepSea_Score</td>
+                                <td>DeepSEA score from DeepSEA, a deep learning-based algorithmic framework for predicting the chromatin effects of sequence alterations with single nucleotide sensitivity.</td>
+                            </tr>
+
+
+                            <tr>
+                                <td rowspan="25">Non-coding <i>de novo</i> mutations </td>
+                                <td>Chr</td>
+                                <td>Chromosome number.</td>
+                            </tr>
+                             <tr>
+                                <td>Position</td>
+                                <td>Genomic position on the chromosome as to hg19 (1-based coordinate).</td>
+                            </tr>
+                             <tr>
+                                <td>Variant</td>
+                                <td>Reference nucleotide allele > Alternate nucleotide allele.</td>
+                            </tr>
+                             <tr>
+                                <td>Func.refGene</td>
+                                <td>Regions (e.g., exonic, intronic, non-coding RNA)) that one variant hits; .</td>
+                            </tr>
+                            <tr>
+                                <td>Potential Severity Level</td>
+                                <td>Impact level evaluated by types of mutations and predict tools (SIFT, Polyphen2, GERP++, CADD, and Clinvar).</td>
+                            </tr>
+                             <tr>
+                                <td>Case or control</td>
+                                <td>Sample from case or control set.</td>
+                            </tr>
+                             <tr>
+                                <td>Primary Phenotype</td>
+                                <td>Main phenotype of the patients for inclusion in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>Sample ID</td>
+                                <td>Sample ID of the variant carrier.</td>
+                            </tr>
+                             <tr>
+                                <td>Study</td>
+                                <td>The Study that indicates the variant.</td>
+                            </tr>
+                             <tr>
+                                <td>Validation</td>
+                                <td>Validation status of the variant.</td>
+                            </tr>
+                             <tr>
+                                <td>1000G_ALL</td>
+                                <td>Average alternative allele frequency of the variant in all 1000G sets.</td>
+                            </tr>
+                             <tr>
+                                <td>CADD_phred</td>
+                                <td>Combined Annotation Dependent Depletion, phred-scaled scores, 10 means 10% percentile highest scores, 20 means 1% percentile highest scores, and 30% means 0.1% percentile highest scores.</td>
+                            </tr>
+                             <tr>
+                                <td>GnomAD_genome_ALL</td>
+                                <td>Allele frequency in gnomAD genome set.</td>
+                            </tr>
+                             <tr>
+                                <td>Enhancer_ID</td>
+                                <td>The identifier of enhancer.</td>
+                            </tr>
+                             <tr>
+                                <td>Enhancer_Chr</td>
+                                <td>The chromosome number of the enhancer.</td>
+                            </tr>
+                             <tr>
+                                <td>Enhancer_Start</td>
+                                <td>The start position of the enhancer on the chromosome.</td>
+                            </tr>
+                             <tr>
+                                <td>Enhancer_End</td>
+                                <td>The end position of the enhancer on the chromosome.</td>
+                            </tr>
+                             <tr>
+                                <td>Enhancer_Target_GeneID</td>
+                                <td>The target gene ID of the enhancer.</td>
+                            </tr>
+                             <tr>
+                                <td>Promoter_ID</td>
+                                <td>The identifier of promoter.</td>
+                            </tr>
+                             <tr>
+                                <td>Promoter_Chr</td>
+                                <td>The chromosome number of the promoter.</td>
+                            </tr>
+                             <tr>
+                                <td>Promoter_Start</td>
+                                <td>The start position of the promoter on the chromosome.</td>
+                            </tr>
+                             <tr>
+                                <td>Promoter_End</td>
+                                <td>The end position of the promoter on the chromosome.</td>
+                            </tr>
+                             <tr>
+                                <td>Promoter_Target_Geneid</td>
+                                <td>The target gene ID of the promoter.</td>
+                            </tr>
+                             <tr>
+                                <td>Promoter_Gene_Symbol</td>
+                                <td>The target gene symbol of the promoter.</td>
+                            </tr>
+                             <tr>
+                                <td>DeepSea_Score</td>
+                                <td>DeepSEA score from DeepSEA, a deep learning-based algorithmic framework for predicting the chromatin effects of sequence alterations with single nucleotide sensitivity.</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="12"><i>De novo</i> copy number variations</td>
+                                <td>Chr</td>
+                                <td>Chromosome number.</td>
+                            </tr>
+                            <tr>
+                                <td>CNV_ID</td>
+                                <td>CNV ID.</td>
+                            </tr>
+                            <tr>
+                                <td>Band</td>
+                                <td>CytoBand location of the CNV.</td>
+                            </tr>
+                            <tr>
+                                <td>Mutation Type</td>
+                                <td>Mutation type of the CNV.</td>
+                            </tr>
+                            <tr>
+                                <td>Start</td>
+                                <td>CNV start position in hg19.</td>
+                            </tr>
+                            <tr>
+                                <td>End</td>
+                                <td>CNV end position in hg19.</td>
+                            </tr>
+                            <tr>
+                                <td>Disorder</td>
+                                <td>Clinical phenotype of the CNV carrier.</td>
+                            </tr>
+                            <tr>
+                                <td>Patient ID</td>
+                                <td>Patient ID of the CNV carrier.</td>
+                            </tr>
+                            <tr>
+                                <td>Study</td>
+                                <td>The Study that indicates the CNV.</td>
+                            </tr>
+                            <tr>
+                                <td>Of probands</td>
+                                <td>The total number of probands involved in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>Of controls</td>
+                                <td>The total number of controls involved in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>Gene Symbols</td>
+                                <td>Genes the CNV hits.</td>
+                            </tr>
+                        </tbody>
+                </table>
+                </div>
+                <div id='MutationDetail'>
+                    <table class="table table-bordered table-hover table-striped table-hasthead nowrap">
+                        <caption style="background-color: #007BB6; color: white"><strong>&nbsp;Mutation Detail</strong></caption>
+                        <thead>
+                            <tr>
+                                    <td></td>
+                                    <td><strong>Column Names</strong></td>
+                                    <td><strong>Description</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="44">Coding <i>de novo</i> mutations </td>
+                                <td>Chr</td>
+                                <td>Chromosome number.</td>
+                            </tr>
+                            <tr>
+                                <td>Position</td>
+                                <td>Genomic position on the chromosome as to hg19 (1-based coordinate).</td>
+                            </tr>
+                            <tr>
+                                <td>Variant</td>
+                                <td>Reference nucleotide allele > Alternate nucleotide allele.</td>
+                            </tr>
+                            <tr>
+                                <td>Gene</td>
+                                <td>Gene symbol. RefSeq gene definition is used.</td>
+                            </tr>
+                            <tr>
+                                <td>Case or control</td>
+                                <td>Sample from case or control set.</td>
+                            </tr>
+                            <tr>
+                                <td>Func.refGene</td>
+                                <td>Regions (e.g., exonic, intronic, non-coding RNA)) that one variant hits; .</td>
+                            </tr>
+                            <tr>
+                                <td>ExonicFunc.refGene</td>
+                                <td>Exonic variant function (non-synonymous, synonymous, etc).</td>
+                            </tr>
+                            <tr>
+                                <td>SampleID</td>
+                                <td>Sample ID of the variant carrier.</td>
+                            </tr>
+                            <tr>
+                                <td>Study</td>
+                                <td>The Study that indicates the variant.</td>
+                            </tr>
+                            <tr>
+                                <td>NumProbands</td>
+                                <td>The total number of probands involved in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>NumControls</td>
+                                <td>The total number of controls involved in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>SequenceType</td>
+                                <td>The used sequencing technology.</td>
+                            </tr>
+                            <tr>
+                                <td>PrimaryPhenotype</td>
+                                <td>Main phenotype of the patients for inclusion in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>Validation</td>
+                                <td>Validation status of the variant.</td>
+                            </tr>
+                            <tr>
+                                <td>Sex</td>
+                                <td>Gender of the variant carrier.</td>
+                            </tr>
+                            <tr>
+                                <td>Source</td>
+                                <td>The source used to collect the mutation.</td>
+                            </tr>
+                            <tr>
+                                <td>AAChange.refGene</td>
+                                <td>Amino acid changes refers to hg19 reference sequence.</td>
+                            </tr>
+                            <tr>
+                                <td>1000G_ALL</td>
+                                <td>Average alternative allele frequency of the variant in all 1000G sets.</td>
+                            </tr>
+                            <tr>
+                                <td>1000G_EAS</td>
+                                <td>Alternative allele frequency of the variant in 1000G East Asian sets.</td>
+                            </tr>
+                            <tr>
+                                <td>Mutation site in protein structure</td>
+                                <td>Mutation site in protein structure.</td>
+                            </tr>
+                            <tr>
+                                <td>ExAC_Freq</td>
+                                <td>Frequency of the variant in the ExAC database.</td>
+                            </tr>
+                            <tr>
+                                <td>ExAC_EAS</td>
+                                <td>Frequency of the variant in the ExAC East Asian set.</td>
+                            </tr>
+                            <tr>
+                                <td>ESP6500si_ALL</td>
+                                <td>Allele frequency in ESP6500si dataset.</td>
+                            </tr>
+                            <tr>
+                                <td>dbSNP</td>
+                                <td>rsID of the variant.</td>
+                            </tr>
+                            <tr>
+                                <td>ClinVar_SIG</td>
+                                <td>Variant Clinical Significance , including unknown, untested, non-pathogenic, probable-non-pathogenic, probable-pathogenic, pathogenic, drug-response,histocompatibility, other.</td>
+                            </tr>
+                            <tr>
+                                <td>SIFT_pred</td>
+                                <td>SIFT prediction.</td>
+                            </tr>
+                            <tr>
+                                <td>Polyphen2_HVAR_pred</td>
+                                <td>Polyphen2 prediction based on HVAR.</td>
+                            </tr>
+                            <tr>
+                                <td>LRT_pred</td>
+                                <td>LRT prediction.</td>
+                            </tr>
+                            <tr>
+                                <td>FATHMM_pred</td>
+                                <td>FATHMM prediction. </td>
+                            </tr>
+                            <tr>
+                                <td>CADD_phred</td>
+                                <td>Combined Annotation Dependent Depletion, phred-scaled scores, 10 means 10% percentile highest scores, 20 means 1% percentile highest scores, and 30% means 0.1% percentile highest scores.</td>
+                            </tr>
+                            <tr>
+                                <td>Eigen_coding_or_noncoding</td>
+                                <td>Aggregate functional score for variants estimated by Eigen.</td>
+                            </tr>
+                            <tr>
+                                <td>GERP++_RS</td>
+                                <td>GREP++ "rejected substitutions" (RS) score.</td>
+                            </tr>
+                            <tr>
+                                <td>gnomAD_exome_ALL</td>
+                                <td>Allele frequency in gnomAD exome set.</td>
+                            </tr>
+                            <tr>
+                                <td>gnomAD_exome_EAS</td>
+                                <td>Allele frequency in gnomAD exome East Asian set.</td>
+                            </tr>
+                            <tr>
+                                <td>gnomAD_genome_ALL</td>
+                                <td>Allele frequency in gnomAD genome set.</td>
+                            </tr>
+                            <tr>
+                                <td>gnomAD_genome_EAS</td>
+                                <td>Allele frequency in gnomAD genome East Asian set.</td>
+                            </tr>
+                            <tr>
+                                <td>Enhancer Id</td>
+                                <td>The identifier of enhancer.</td>
+                            </tr>
+                            <tr>
+                                <td>Enhancer Chr</td>
+                                <td>The chromosome number of the enhancer.</td>
+                            </tr>
+                            <tr>
+                                <td>Enhancer Start</td>
+                                <td>The start position of the enhancer on the chromosome.</td>
+                            </tr>
+                            <tr>
+                                <td>Enhancer End</td>
+                                <td>The end position of the enhancer on the chromosome.</td>
+                            </tr>
+                            <tr>
+                                <td>Enhancer target gene id</td>
+                                <td>The target gene ID of the enhancer.</td>
+                            </tr>
+                            <tr>
+                                <td>DeepSea_Score</td>
+                                <td>DeepSEA score from DeepSEA, a deep learning-based algorithmic framework for predicting the chromatin effects of sequence alterations with single nucleotide sensitivity.</td>
+                            </tr>
+                            <tr>
+                                <td>Haploinsufficiency_Score</td>
+                                <td>Predicted probability of exhibiting haploinsufficiency.</td>
+                            </tr>
+                            <tr>
+                                <td>Haploinsufficiency_Rank</td>
+                                <td>High ranks (e.g. 0-10%) indicate a gene is more likely to exhibit haploinsufficiency, low ranks (e.g. 90-100%) indicate a gene is more likely to NOT exhibit haploinsufficiency.</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="42">Non-coding <i>de novo</i> mutations</td>
+                                <td>Chr</td>
+                                <td>Chromosome number.</td>
+                            </tr>
+                            <tr>
+                                <td>Position</td>
+                                <td>Genomic position on the chromosome as to hg19 (1-based coordinate).</td>
+                            </tr>
+                            <tr>
+                                <td>Variant</td>
+                                <td>Reference nucleotide allele > Alternate nucleotide allele.</td>
+                            </tr>
+                            <tr>
+                                <td>Gene</td>
+                                <td>Gene symbol. RefSeq gene definition is used.</td>
+                            </tr>
+                            <tr>
+                                <td>Case or control</td>
+                                <td>Sample from case or control set.</td>
+                            </tr>
+                            <tr>
+                                <td>Func.refGene</td>
+                                <td>Regions (e.g., exonic, intronic, non-coding RNA)) that one variant hits;.</td>
+                            </tr>
+                            <tr>
+                                <td>ExonicFunc.refGene</td>
+                                <td>Exonic variant function, e.g., nonsynonymous, synonymous, frameshift insertion.</td>
+                            </tr>
+                            <tr>
+                                <td>SampleID</td>
+                                <td>Sample ID of the variant carrier.</td>
+                            </tr>
+                            <tr>
+                                <td>Study</td>
+                                <td>The Study that indicates the variant.</td>
+                            </tr>
+                            <tr>
+                                <td>NumProbands</td>
+                                <td>The total number of probands involved in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>NumControls</td>
+                                <td>The total number of controls involved in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>SequenceType</td>
+                                <td>The used sequencing technology.</td>
+                            </tr>
+                            <tr>
+                                <td>PrimaryPhenotype</td>
+                                <td>Main phenotype of the patients for inclusion in the study.</td>
+                            </tr>
+                            <tr>
+                                <td>Validation</td>
+                                <td>Validation status of the variant.</td>
+                            </tr>
+                            <tr>
+                                <td>Sex</td>
+                                <td>Gender of the variant carrier.</td>
+                            </tr>
+                            <tr>
+                                <td>Source</td>
+                                <td>The source used to collect the mutation.</td>
+                            </tr>
+                            <tr>
+                                <td>AAChange.refGene</td>
+                                <td>Amino acid changes refers to hg19 reference sequence.</td>
+                            </tr>
+                            <tr>
+                                <td>1000G_ALL</td>
+                                <td>Average alternative allele frequency of the variant in all 1000G sets.</td>
+                            </tr>
+                            <tr>
+                                <td>dbSNP</td>
+                                <td>rs number from dbSNP build.</td>
+                            </tr>
+                            <tr>
+                                <td>ClinVar_SIG</td>
+                                <td>Variant Clinical Significance , including unknown, untested, non-pathogenic, probable-non-pathogenic, probable-pathogenic, pathogenic, drug-response,histocompatibility, other.</td>
+                            </tr>
+                            <tr>
+                                <td>LRT_pred</td>
+                                <td>LRT prediction, D(eleterious), N(eutral) or U(nknown).</td>
+                            </tr>
+                            <tr>
+                                <td>FATHMM_pred</td>
+                                <td>FATHMM prediction, D(damaging) or T(tolerated).</td>
+                            </tr>
+                            <tr>
+                                <td>CADD_phred</td>
+                                <td>Combined Annotation Dependent Depletion, phred-scaled scores, 10 means 10% percentile highest scores, 20 means 1% percentile highest scores, and 30% means 0.1% percentile highest scores.</td>
+                            </tr>
+                            <tr>
+                                <td>Eigen_coding_or_noncoding</td>
+                                <td>Coding or non-coding .</td>
+                            </tr>
+                            <tr>
+                                <td>GERP++_RS</td>
+                                <td>GERP++ RS score, the larger the score, the more conserved the site is.</td>
+                            </tr>
+                            <tr>
+                                <td>gnomAD_genome_ALL</td>
+                                <td>Allele frequency in gnomAD genome set.</td>
+                            </tr>
+                            <tr>
+                                <td>gnomAD_genome_EAS</td>
+                                <td>Allele frequency in gnomAD genome East Asian set.</td>
+                            </tr>
+                            <tr>
+                                <td>gnomAD_genome_ALL</td>
+                                <td>Allele frequency in gnomAD genome set.</td>
+                            </tr>
+                            <tr>
+                                <td>enh_id</td>
+                                <td>The identifier of enhancer.</td>
+                            </tr>
+                            <tr>
+                                <td>enh_chr</td>
+                                <td>The chromosome number of the enhancer.</td>
+                            </tr>
+                            <tr>
+                                <td>enh_start</td>
+                                <td>The start position of the enhancer on the chromosome.</td>
+                            </tr>
+                            <tr>
+                                <td>enh_end</td>
+                                <td>The end position of the enhancer on the chromosome.</td>
+                            </tr>
+                            <tr>
+                                <td>enh_target_geneid</td>
+                                <td>The target gene ID of the enhancer.</td>
+                            </tr>
+                            <tr>
+                                <td>pro_id</td>
+                                <td>The identifier of promoter.</td>
+                            </tr>
+                            <tr>
+                                <td>pro_chr</td>
+                                <td>The chromosome number of the promoter.</td>
+                            </tr>
+                            <tr>
+                                <td>pro_start</td>
+                                <td>The start position of the promoter on the chromosome.</td>
+                            </tr>
+                            <tr>
+                                <td>pro_end</td>
+                                <td>The end position of the promoter on the chromosome.</td>
+                            </tr>
+                            <tr>
+                                <td>pro_target_geneid</td>
+                                <td>The target gene ID of the promoter.</td>
+                            </tr>
+                            <tr>
+                                <td>pro_gene_symbol</td>
+                                <td>The target gene symbol of the promoter.</td>
+                            </tr>
+                            <tr>
+                                <td>DeepSea_Score</td>
+                                <td>DeepSEA score from DeepSEA, a deep learning-based algorithmic framework for predicting the chromatin effects of sequence alterations with single nucleotide sensitivity.</td>
+                            </tr>
+                            <tr>
+                                <td>Haploinsufficiency_Score</td>
+                                <td>Predicted probability of exhibiting haploinsufficiency.</td>
+                            </tr>
+                            <tr>
+                                <td>Haploinsufficiency_Rank</td>
+                                <td>High ranks (e.g. 0-10%) indicate a gene is more likely to exhibit haploinsufficiency, low ranks (e.g. 90-100%) indicate a gene is more likely to NOT exhibit haploinsufficiency.</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">Impacted isoform list</td>
+                                <td>Isoform ID</td>
+                                <td>The ID of the isoform.</td>
+                            </tr>
+                            <tr>
+                                <td>Transcript ID</td>
+                                <td>The transcript ID of the isoform.</td>
+                            </tr>
+                            <tr>
+                                <td>protein sequence ID</td>
+                                <td>The protein ID of the isoform.</td>
+                            </tr>
+                            <tr>
+                                <td>gene ID</td>
+                                <td>The gene ID of the isoform.</td>
+                            </tr>
+                            <tr>
+                                <td>Note</td>
+                                <td>Whether this isoform was assembled in reference hg19.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+{#                <div id="dbNSFP Information">#}
+{#                    <table class="table table-bordered table-hover table-striped table-hasthead nowrap">#}
+{#                        <caption style="background-color: #007BB6; color: white"><strong>&nbsp;dbNSFP Information</strong></caption>#}
+{#                        <thead>#}
+{#                            <tr>#}
+{#                                    <td><strong>Columns of Annotations from dbNSFP Database</strong></td>#}
+{#                                    <td><strong>Pediction Algorithm/Conservation Score</strong></td>#}
+{#                                    <td><strong>Description</strong></td>#}
+{#                                    <td><strong>Method</strong></td>#}
+{#                                    <td><strong>Categorical Prediction</strong></td>#}
+{#                                    <td><strong>Author(s)</strong></td>#}
+{#                            </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                            <tr>#}
+{#                                <td>SIFT_pred</td>#}
+{#                                <td rowspan="2">SIFT</td>#}
+{#                                <td rowspan="2">Sort intolerated from tolerated</td>#}
+{#                                <td rowspan="2">P(An amino acid at a position is tolerated | The most frequentest amino acid being tolerated)</td>#}
+{#                                <td rowspan="2">D: Deleterious (sift<=0.05);<br>T: tolerated (sift>0.05)</td>#}
+{#                                <td rowspan="2">Pauline Ng, Fred Hutchinson Cancer Research Center, Seattle, Washington</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>SIFT_score</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>Polyphen2_HDIV_pred </td>#}
+{#                                <td rowspan="2">Polyphen v2</td>#}
+{#                                <td rowspan="2">Polymorphism phenotyping v2</td>#}
+{#                                <td rowspan="2">D: Probably damaging (>=0.957);<br>P: possibly damaging (0.453<=pp2_hdiv<=0.956);<br>B: benign (pp2_hdiv<=0.452)</td>#}
+{#                                <td rowspan="2">Probablistic Classifier Training sets: HumDiv</td>#}
+{#                                <td rowspan="2">Havard Medical School</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>Polyphen2_HDIV_score</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>Polyphen2_HVAR_pred</td>#}
+{#                                <td rowspan="2">Polyphen v2</td>#}
+{#                                <td rowspan="2">Polymorphism phenotyping v2</td>#}
+{#                                <td rowspan="2">Machine learning Training sets: HumVar</td>#}
+{#                                <td rowspan="2">D: Probably damaging (>=0.957);<br>P: possibly damaging (0.453<=pp2_hdiv<=0.956);<br>B: benign (pp2_hdiv<=0.452)</td>#}
+{#                                <td rowspan="2">Shamil Sunyaev Havard<br>Medical School</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>Polyphen2_HVAR_score</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>LRT_pred </td>#}
+{#                                <td rowspan="2">LRT</td>#}
+{#                                <td rowspan="2">Likelihood ratio test</td>#}
+{#                                <td rowspan="2">LRT of H0: each codon evolves neutrally vs H1: the codon evovles under negative selection</td>#}
+{#                                <td>D: Deleterious;<br>N: Neutral;<br>U: Unknown. </td>#}
+{#                                <td rowspan="2">Sung Chung, Justin Fay Washington University</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>LRT_score</td>#}
+{#                                <td>Lower scores are more deleterious. </td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>MutationTaster_pred </td>#}
+{#                                <td rowspan="2">MutationTaster</td>#}
+{#                                <td rowspan="2">Bayes Classifier</td>#}
+{#                                <td rowspan="2"></td>#}
+{#                                <td>A: (""disease_causing_automatic"");<br>D: (""disease_causing"");<br>N: (""polymorphism [probably harmless]"");<br>P: (""polymorphism_automatic[known to be harmless]". </td>#}
+{#                                <td rowspan="2">Markus Schuelke<br>the Charité - Universitätsmedizin Berlin</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>MutationTaster_score</td>#}
+{#                                <td>higher values are more deleterious</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>MutationAssessor_pred </td>#}
+{#                                <td rowspan="2">MutationAssessor</td>#}
+{#                                <td rowspan="2">Entropy of multiple sequence alighnment</td>#}
+{#                                <td rowspan="2"></td>#}
+{#                                <td>H: high; <br>M: medium; <br>L: low; <br>N: neutral. </td>#}
+{#                                <td rowspan="2">Reva Boris <br>Computation Biology Center Memorial Sloan Kettering Cancer Center</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>MutationAssessor_score</td>#}
+{#                                <td>H/M means functional and L/N means non-functional higher values are more deleterious</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>FATHMM_pred</td>#}
+{#                                <td rowspan="2">FATHMM</td>#}
+{#                                <td rowspan="2">HMM</td>#}
+{#                                <td rowspan="2">Functional analysis through hidden markov model HMM</td>#}
+{#                                <td>D: Deleterious;<br>T: Tolerated. </td>#}
+{#                                <td rowspan="2">Shihab Hashem<br>University of Bristol, UK</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>FATHMM_score</td>#}
+{#                                <td>lower values are more deleterious. </td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>PROVEAN_pred </td>#}
+{#                                <td rowspan="2"></td>#}
+{#                                <td rowspan="2">Protein Variation Effect Analyzer</td>#}
+{#                                <td rowspan="2">Clustering of homologus sequences</td>#}
+{#                                <td>D: Deleterious;<br>N: Neutral. </td>#}
+{#                                <td rowspan="2">Choi Y J. Craig Venter Institute</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>PROVEAN_score</td>#}
+{#                                <td>higher values are more deleterious. </td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>VEST3_score</td>#}
+{#                                <td>VEST V3</td>#}
+{#                                <td>Variant effect scoring tool</td>#}
+{#                                <td>Random forest classifier</td>#}
+{#                                <td>higher values are more deleterious</td>#}
+{#                                <td>Rachel Karchin John Hopkins University</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>CADD_raw</td>#}
+{#                                <td rowspan="2">CADD Combined annotation dependent depletion</td>#}
+{#                                <td rowspan="2">Linear kernel SVM</td>#}
+{#                                <td rowspan="2"></td>#}
+{#                                <td rowspan="2">higher values are more deleterious</td>#}
+{#                                <td rowspan="2">Jay Shendure, Xiaohui Xie University of California - Irvine</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>CADD_phred</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>DANN_score</td>#}
+{#                                <td>DANN</td>#}
+{#                                <td>Deleterious Annotation of genetic variants using Neural Networks</td>#}
+{#                                <td>Neural network</td>#}
+{#                                <td>higher values are more deleterious</td>#}
+{#                                <td>Jay Shendure, Xiaohui Xie<br>University of California - Irvine</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>fathmm-MKL_coding_pred</td>#}
+{#                                <td>FATHMM-MKL</td>#}
+{#                                <td>predicting the effects of both coding and non-coding variants using nucleotide-based HMMs</td>#}
+{#                                <td>Classifier based on multiple kernel learning</td>#}
+{#                                <td>D: Deleterious;<br>T: Tolerated. <br>Score >= 0.5: D;<br>Score < 0.5: T</td>#}
+{#                                <td>Shihab Hashem <br>University of Bristol, UK</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>MetaSVM_pred</td>#}
+{#                                <td rowspan="2">MetaSVM</td>#}
+{#                                <td rowspan="2">Support vector machine</td>#}
+{#                                <td>D: Deleterious;<br>T: Tolerated;</td>#}
+{#                                <td rowspan="2"></td>#}
+{#                                <td rowspan="2">Coco Dong <br>USC Biostatiscs Department</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>MetaSVM_score</td>#}
+{#                                <td>higher scores are more deleterious.</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>MetaLR_pred</td>#}
+{#                                <td rowspan="2">MetaLR</td>#}
+{#                                <td rowspan="2">Logistic regression</td>#}
+{#                                <td>D: Deleterious;<br>T: Tolerated; </td>#}
+{#                                <td rowspan="2"></td>#}
+{#                                <td rowspan="2">Coco Dong <br>USC Biostatiscs Department</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>MetaLR_score</td>#}
+{#                                <td>higher scores are more deleterious.</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>integrated_fitCons_score </td>#}
+{#                                <td rowspan="2">FitCons</td>#}
+{#                                <td rowspan="2">Fitness consequences of functional annotation</td>#}
+{#                                <td rowspan="2">Integrate functional assays like ChIP-Seq with conservation measure of transcription factor binding sites</td>#}
+{#                                <td rowspan="2">higher scores are more deleterious</td>#}
+{#                                <td rowspan="2">Abriza<br>Cold Spring Harbor Lab</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>integrated_confidence_value</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>GERP++_RS</td>#}
+{#                                <td rowspan="2">Genome Evolutionary Rate Profiling ++</td>#}
+{#                                <td rowspan="2">maximum likelihood estimation procedure</td>#}
+{#                                <td rowspan="2">higher scores are more deleterious</td>#}
+{#                                <td rowspan="2"></td>#}
+{#                                <td rowspan="2">Eugne Davydov<br>Stanford University, CS Department</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>GERP++_NR</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>phyloP7way_vertebrate</td>#}
+{#                                <td>PhyloP</td>#}
+{#                                <td>Phylogentic p-values</td>#}
+{#                                <td>Phylogentic p-values calculated from a LRT, score-based test, GERP test Use 7 species</td>#}
+{#                                <td>higher scores are more deleterious</td>#}
+{#                                <td>Adam Siepel <br>UCSC</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>phyloP20way_mammalian</td>#}
+{#                                <td>PhyloP</td>#}
+{#                                <td>Phylogentic p-values</td>#}
+{#                                <td>a phylogenetic hidden Markov model (phylo-HMM) Use 20 species</td>#}
+{#                                <td>higher scores are more deleterious</td>#}
+{#                                <td>Adam Siepel <br>UCSC</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>phastCons7way_vertebrate</td>#}
+{#                                <td>phastCons</td>#}
+{#                                <td>A phylogenetic hidden Markov model (phylo-HMM) Use 7 species</td>#}
+{#                                <td></td>#}
+{#                                <td>higher scores are more deleterious</td>#}
+{#                                <td>Adam Siepel <br>UCSC</td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>phastCons20way_mammalian</td>#}
+{#                                <td>phastCons</td>#}
+{#                                <td>a phylogenetic hidden Markov model (phylo-HMM) Use 20 species</td>#}
+{#                                <td></td>#}
+{#                                <td>higher scores are more deleterious</td>#}
+{#                                <td>Adam Siepel <br>UCSC</td>#}
+{#                            </tr>#}
+{#                           <tr>#}
+{#                                <td>SiPhy_29_way</td>#}
+{#                                <td>SiPhy</td>#}
+{#                                <td>Probablistic framework, HMM Use 29 species</td>#}
+{#                               <td></td>#}
+{#                                <td>higher scores are more deleterious</td>#}
+{#                                <td>Manual Garber <br>Broad Institute of MIT & Harvard</td>#}
+{#                            </tr>#}
+{##}
+{#                        </tbody>#}
+{#                    </table>#}
+{#                </div>#}
+            </div>
+            <hr>
+        </div>
+
+
+    </div>
+    <div class="footer">
+
+        <div class="foot-p">
+            {#           <img class="line2" alt=""  src="/static/line2.png" style="width: 600px; height: 60px;" />#}
+            <p>
+                <small>© 2018 bmi.sjtu.edu.cn. All rights reserved.</small>
+                <br/>
+                <small>浙ICP备18030141号.</small>
+            </p>
+
+        </div>
+    </div>
+    </body>
+{% endblock %}
