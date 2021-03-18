@@ -36,6 +36,21 @@ input, button
     transform: scale(0.6);
 }
 
+#cover2
+{
+    position: relative;
+    margin:auto;
+    left: 0;
+    right: 0;
+    width: 800px;
+    height: : 20px;
+    padding: 10px;
+    background-color: #1ABC9C;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px #1ABC9C , 0 0 0 20px #ffffffeb;
+    transform: scale(0.3);
+}
+
 form
 {
     height: 96px;

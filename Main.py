@@ -89,4 +89,4 @@ def page_not_found(e):
 
 # ------------------------Future-------------------------------
 if __name__ == "__main__":
-    app.run(threaded=True)
+    app.run(threaded=True, port=66)

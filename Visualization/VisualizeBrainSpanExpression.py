@@ -1,12 +1,5 @@
 # -*- encoding: utf-8 -*-
-# -------------------------------------------------------------------------------
-# @file:        VisualizeBrainSpanExpression
-# @Author:      GuoSijia
-# @Purpose:     
-# @Created:     2018-09-25
-# @update:      2018-09-25 11:34
-# @Software:    PyCharm
-# -------------------------------------------------------------------------------
+
 from pyecharts import Bar, Line, Scatter, Overlap, Page
 import pandas as pd
 import math
